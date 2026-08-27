@@ -1,0 +1,34 @@
+{% extends 'appointments/admin_base.html' %}
+
+{% block title %}Reject Appointment - NutriBeginnings{% endblock %}
+
+{% block content %}
+<div class="reject-page">
+    <div class="reject-card">
+        <div class="reject-kicker">APPOINTMENT REQUEST</div>
+        <h1>Reject Appointment</h1>
+        <p class="reject-subtitle">Please provide a reason for rejecting this appointment. The client will be able to see this message.</p>
+
+        <div class="appointment-preview">
+            <div><strong>Patient</strong><span>{{ appointment.user.username }}</span></div>
+            <div><strong>Date</strong><span>{{ appointment.appointment_date|date:'d M Y' }}</span></div>
+            <div><strong>Time</strong><span>{{ appointment.get_appointment_time_display }}</span></div>
+        </div>
+
+        {% if error %}
+            <div class="form-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="rejection_message">Reason for rejection</label>
+            <textarea id="rejection_message" name="rejection_message" rows="6" placeholder="Enter the reason for rejecting this appointment..." required>{{ request.POST.rejection_message }}</textarea>
+
+            <div class="reject-actions">
+                <a href="{% url 'appointments:admin_dashboard' %}" class="secondary-btn">Cancel</a>
+                <button type="submit" class="confirm-reject-btn">Reject Appointment</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

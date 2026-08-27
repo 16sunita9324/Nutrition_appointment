@@ -71,7 +71,7 @@
                     <div class="action-group">
                     {% if appointment.status == 'Pending' %}
                         <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Confirmed' %}">{% csrf_token %}<button class="action-btn accept-btn" type="submit">✓ Accept</button></form>
-                        <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Rejected' %}">{% csrf_token %}<button class="action-btn reject-btn" type="submit">✕ Reject</button></form>
+                        <a class="action-btn reject-btn" href="{% url 'appointments:reject_appointment' appointment.pk %}">✕ Reject</a>
                     {% elif appointment.status == 'Confirmed' %}
                         <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Completed' %}">{% csrf_token %}<button class="action-btn complete-btn" type="submit">✓ Complete</button></form>
                         <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Cancelled' %}">{% csrf_token %}<button class="action-btn cancel-admin-btn" type="submit">Cancel</button></form>

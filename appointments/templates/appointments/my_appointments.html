@@ -38,7 +38,14 @@
                         {{ appointment.status }}
                     </div>
 
-                    <a href="{% url 'appointments:detail' appointment.pk %}" class="view-btn">View</a>
+                    <div class="appointment-actions">
+                        <a href="{% url 'appointments:detail' appointment.pk %}" class="view-btn">View</a>
+                        {% if appointment.status == 'Rejected' and appointment.rejection_message %}
+                            <div class="rejection-note">
+                                <strong>Nutritionist's message:</strong> {{ appointment.rejection_message }}
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
         </div>

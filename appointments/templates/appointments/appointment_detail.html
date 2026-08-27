@@ -46,4 +46,11 @@
         <a href="{% url 'appointments:my_appointments' %}" class="back-link">← Back to My Appointments</a>
     </div>
 </div>
+
+{% if appointment.status == 'Rejected' and appointment.rejection_message %}
+<div class="rejection-message">
+    <h3>Reason from Nutritionist</h3>
+    <p>{{ appointment.rejection_message }}</p>
+</div>
+{% endif %}
 {% endblock %}

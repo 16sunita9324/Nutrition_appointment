@@ -88,3 +88,29 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
 
 @media (max-width:900px) { .admin-sidebar { width:205px; } .admin-stats { grid-template-columns:1fr 1fr; } }
 @media (max-width:650px) { .admin-shell { display:block; } .admin-sidebar { position:static; width:100%; min-height:auto; } .admin-nav { grid-template-columns:repeat(3,1fr); } .admin-sidebar-bottom { margin-top:20px; } .admin-main { padding:28px 4%; } .admin-topbar { display:block; } .admin-date { display:inline-block; margin-top:15px; } .admin-topbar h1 { font-size:30px; } .admin-stats { grid-template-columns:1fr 1fr; } .admin-login-card { padding:30px 23px; } }
+
+
+/* Rejection reason page */
+.reject-page { max-width: 850px; margin: 40px auto; padding: 0 20px 50px; }
+.reject-card { background: #fff; border: 1px solid #e7e7e7; border-radius: 18px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.reject-kicker { color: #984646; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 8px; }
+.reject-card h1 { margin: 0 0 8px; }
+.reject-subtitle { color: #666; margin-bottom: 25px; line-height: 1.5; }
+.appointment-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; background: #faf6f6; border-radius: 12px; padding: 18px; margin-bottom: 24px; }
+.appointment-preview div { display: flex; flex-direction: column; gap: 5px; }
+.appointment-preview strong { font-size: 12px; color: #777; text-transform: uppercase; }
+.appointment-preview span { font-weight: 600; color: #333; }
+.reject-card label { display: block; font-weight: 700; margin-bottom: 8px; }
+.reject-card textarea { width: 100%; box-sizing: border-box; border: 1px solid #d8d8d8; border-radius: 10px; padding: 13px; font: inherit; resize: vertical; min-height: 140px; }
+.reject-card textarea:focus { outline: none; border-color: #984646; box-shadow: 0 0 0 3px rgba(152,70,70,.10); }
+.form-error { background: #fdeaea; color: #984646; border-radius: 8px; padding: 10px 12px; margin-bottom: 16px; }
+.reject-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 22px; }
+.secondary-btn, .confirm-reject-btn { border: 0; border-radius: 9px; padding: 11px 18px; text-decoration: none; font-weight: 700; cursor: pointer; }
+.secondary-btn { background: #eee; color: #444; }
+.confirm-reject-btn { background: #984646; color: #fff; }
+.rejection-message { margin-top: 25px; padding: 18px 20px; background: #fff4f4; border-left: 4px solid #984646; border-radius: 10px; }
+.rejection-message h3 { margin-top: 0; color: #984646; }
+.rejection-message p { margin-bottom: 0; line-height: 1.6; }
+.rejection-note { margin-top: 10px; padding: 9px 11px; background: #fff4f4; color: #704040; border-radius: 8px; font-size: 13px; line-height: 1.4; max-width: 360px; }
+.appointment-actions { display: flex; flex-direction: column; align-items: flex-start; }
+@media (max-width: 700px) { .appointment-preview { grid-template-columns: 1fr; } .reject-card { padding: 24px; } }

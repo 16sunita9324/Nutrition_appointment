@@ -158,10 +158,45 @@ def admin_dashboard(request):
 
 
 @staff_required
+def reject_appointment(request, pk):
+    appointment = get_object_or_404(Appointment, pk=pk)
+
+    # Only pending appointments can be rejected from this page.
+    if appointment.status != 'Pending':
+        messages.warning(request, 'Only pending appointments can be rejected.')
+        return redirect('appointments:admin_dashboard')
+
+    if request.method == 'POST':
+        rejection_message = request.POST.get('rejection_message', '').strip()
+
+        if not rejection_message:
+            return render(request, 'appointments/reject_appointment.html', {
+                'appointment': appointment,
+                'error': 'Please enter a reason for rejecting the appointment.'
+            })
+
+        appointment.status = 'Rejected'
+        appointment.rejection_message = rejection_message
+        appointment.save(update_fields=['status', 'rejection_message', 'updated_at'])
+
+        messages.success(
+            request,
+            f"Appointment for {appointment.user.username} has been rejected."
+        )
+        return redirect('appointments:admin_dashboard')
+
+    return render(
+        request,
+        'appointments/reject_appointment.html',
+        {'appointment': appointment}
+    )
+
+
+@staff_required
 def update_appointment_status(request, pk, status):
     appointment = get_object_or_404(Appointment, pk=pk)
 
-    allowed_statuses = {'Confirmed', 'Rejected', 'Completed', 'Cancelled', 'Pending'}
+    allowed_statuses = {'Confirmed', 'Completed', 'Cancelled', 'Pending'}
 
     if request.method == 'POST' and status in allowed_statuses:
         appointment.status = status
