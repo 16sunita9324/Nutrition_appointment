@@ -1,0 +1,49 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Appointment Details - Tiny Nutrition Beginnings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appointments/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="appointment-page">
+    <div class="appointment-card detail-card">
+        <div class="detail-top">
+            <div>
+                <p class="eyebrow">APPOINTMENT DETAILS</p>
+                <h1>Nutrition Consultation</h1>
+                <p>with Puja, Nutritionist</p>
+            </div>
+            <div class="appointment-status status-{{ appointment.status|lower }}">
+                {{ appointment.status }}
+            </div>
+        </div>
+
+        <div class="detail-grid">
+            <div class="detail-box">
+                <span>Date</span>
+                <strong>{{ appointment.appointment_date|date:'l, d F Y' }}</strong>
+            </div>
+            <div class="detail-box">
+                <span>Time</span>
+                <strong>{{ appointment.get_appointment_time_display }}</strong>
+            </div>
+            <div class="detail-box full-width">
+                <span>Reason for Consultation</span>
+                <strong>{% if appointment.reason %}{{ appointment.reason }}{% else %}Not provided{% endif %}</strong>
+            </div>
+        </div>
+
+        {% if appointment.status == 'Pending' or appointment.status == 'Confirmed' %}
+            <form method="POST" action="{% url 'appointments:cancel' appointment.pk %}" onsubmit="return confirm('Cancel this appointment?');">
+                {% csrf_token %}
+                <button type="submit" class="cancel-btn">Cancel Appointment</button>
+            </form>
+        {% endif %}
+
+        <a href="{% url 'appointments:my_appointments' %}" class="back-link">← Back to My Appointments</a>
+    </div>
+</div>
+{% endblock %}

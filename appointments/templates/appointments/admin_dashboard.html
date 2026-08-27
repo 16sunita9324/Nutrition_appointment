@@ -1,0 +1,95 @@
+{% extends 'appointments/admin_base.html' %}
+
+{% block title %}Dashboard - NutriBeginnings{% endblock %}
+{% block dashboard_active %}active{% endblock %}
+{% block appointments_active %}{% if status_filter != 'All' %}active{% endif %}{% endblock %}
+
+{% block content %}
+<div class="admin-topbar">
+    <div>
+        <div class="admin-kicker">GOOD DAY, {{ user.username|upper }}</div>
+        <h1>Appointment Dashboard</h1>
+        <p>Review consultation requests and manage your patients' appointments.</p>
+    </div>
+    <div class="admin-date">{{ today|date:'l, d M Y' }}</div>
+</div>
+
+<div class="admin-stats">
+    <div class="stat-card"><div class="stat-icon">📅</div><div><span>Total Appointments</span><strong>{{ total_count }}</strong></div></div>
+    <div class="stat-card pending-stat"><div class="stat-icon">⏳</div><div><span>Pending</span><strong>{{ pending_count }}</strong></div></div>
+    <div class="stat-card confirmed-stat"><div class="stat-icon">✓</div><div><span>Confirmed</span><strong>{{ confirmed_count }}</strong></div></div>
+    <div class="stat-card completed-stat"><div class="stat-icon">★</div><div><span>Completed</span><strong>{{ completed_count }}</strong></div></div>
+</div>
+
+<div class="section-head">
+    <div>
+        <h2>Appointment Requests</h2>
+        <p>Accept or reject pending requests from here.</p>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <a href="{% url 'appointments:admin_dashboard' %}" class="{% if status_filter == 'All' %}active{% endif %}">All</a>
+    <a href="?status=Pending" class="{% if status_filter == 'Pending' %}active{% endif %}">Pending</a>
+    <a href="?status=Confirmed" class="{% if status_filter == 'Confirmed' %}active{% endif %}">Confirmed</a>
+    <a href="?status=Completed" class="{% if status_filter == 'Completed' %}active{% endif %}">Completed</a>
+    <a href="?status=Rejected" class="{% if status_filter == 'Rejected' %}active{% endif %}">Rejected</a>
+    <a href="?status=Cancelled" class="{% if status_filter == 'Cancelled' %}active{% endif %}">Cancelled</a>
+</div>
+
+<div class="admin-table-wrap">
+    {% if appointments %}
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Appointment</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th class="action-column">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>
+                    <div class="patient-cell">
+                        <div class="patient-avatar">{{ appointment.user.username|first|upper }}</div>
+                        <div>
+                            <div class="patient-name">{{ appointment.user.username }}</div>
+                            <div class="patient-email">{{ appointment.user.email|default:'No email provided' }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="appointment-date">{{ appointment.appointment_date|date:'d M Y' }}</div>
+                    <div class="appointment-time">{{ appointment.get_appointment_time_display }}</div>
+                </td>
+                <td class="reason-cell">{% if appointment.reason %}{{ appointment.reason|truncatechars:65 }}{% else %}<span class="muted">Not provided</span>{% endif %}</td>
+                <td><span class="status-pill status-{{ appointment.status|lower }}">{{ appointment.status }}</span></td>
+                <td>
+                    <div class="action-group">
+                    {% if appointment.status == 'Pending' %}
+                        <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Confirmed' %}">{% csrf_token %}<button class="action-btn accept-btn" type="submit">✓ Accept</button></form>
+                        <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Rejected' %}">{% csrf_token %}<button class="action-btn reject-btn" type="submit">✕ Reject</button></form>
+                    {% elif appointment.status == 'Confirmed' %}
+                        <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Completed' %}">{% csrf_token %}<button class="action-btn complete-btn" type="submit">✓ Complete</button></form>
+                        <form method="post" action="{% url 'appointments:update_status' appointment.pk 'Cancelled' %}">{% csrf_token %}<button class="action-btn cancel-admin-btn" type="submit">Cancel</button></form>
+                    {% else %}
+                        <span class="no-action">No action</span>
+                    {% endif %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="empty-admin">
+            <div class="empty-icon">📅</div>
+            <h2>No appointments found</h2>
+            <p>There are no appointments in this category.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,216 @@
+/* =========================================
+   PAGE
+   ========================================= */
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #eff8d9;
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.login-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =========================================
+   LOGIN CARD
+   ========================================= */
+
+.login-card {
+
+    width: 380px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.login-card h1 {
+
+    text-align: center;
+
+    color: #174c3c;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================================
+   FORM GROUP
+   ========================================= */
+
+.form-group {
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================
+   LABEL
+   ========================================= */
+
+.form-group label {
+
+    display: block;
+
+    font-weight: bold;
+
+    color: #333;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================
+   INPUT
+   ========================================= */
+
+.form-group input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    background-color: #f1f6ff;
+
+}
+
+
+/* When user clicks input */
+
+.form-group input:focus {
+
+    outline: none;
+
+    border-color: #62b20b;
+
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+   ========================================= */
+
+.login-card button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #61b30b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+/* Button hover */
+
+.login-card button:hover {
+
+    background-color: #4f9808;
+
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+   ========================================= */
+
+.error {
+
+    color: red;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+.login-links {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+}
+
+
+/* Each link */
+
+.login-links a {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #61a90a;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+/* Link hover */
+
+.login-links a:hover {
+
+    text-decoration: underline;
+
+}

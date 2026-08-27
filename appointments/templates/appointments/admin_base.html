@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nutritionist Panel{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'appointments/admin.css' %}">
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a href="{% url 'appointments:admin_dashboard' %}" class="admin-brand">
+                <span class="admin-brand-icon">🥗</span>
+                <span><strong>NutriBeginnings</strong><small>Nutritionist Panel</small></span>
+            </a>
+
+            <nav class="admin-nav">
+                <a href="{% url 'appointments:admin_dashboard' %}" class="admin-nav-link {% block dashboard_active %}{% endblock %}">
+                    <span>⌂</span> Dashboard
+                </a>
+                <a href="{% url 'appointments:admin_dashboard' %}?status=Pending" class="admin-nav-link {% block appointments_active %}{% endblock %}">
+                    <span>◷</span> Appointments
+                </a>
+                <a href="{% url 'accounts:home' %}" class="admin-nav-link">
+                    <span>↗</span> View Website
+                </a>
+            </nav>
+
+            <div class="admin-sidebar-bottom">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar">{{ user.username|first|upper }}</div>
+                    <div>
+                        <strong>{{ user.username }}</strong>
+                        <small>Nutritionist / Admin</small>
+                    </div>
+                </div>
+                <a href="{% url 'appointments:admin_logout' %}" class="admin-logout">↪ Logout</a>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            {% if messages %}
+                <div class="admin-messages">
+                    {% for message in messages %}
+                        <div class="admin-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

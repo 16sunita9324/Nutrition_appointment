@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritionist Login - NutriBeginnings</title>
+    <link rel="stylesheet" href="{% static 'appointments/admin.css' %}">
+</head>
+<body class="admin-login-body">
+    <div class="admin-login-card">
+        <div class="login-logo">🥗</div>
+        <div class="login-kicker">NUTRIBEGINNINGS</div>
+        <h1>Nutritionist Login</h1>
+        <p>Sign in to manage patient appointments.</p>
+
+        {% if error %}
+            <div class="login-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" class="admin-login-form">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" placeholder="Enter admin username" required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="Enter password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <a href="{% url 'accounts:home' %}" class="back-site">← Back to website</a>
+    </div>
+</body>
+</html>

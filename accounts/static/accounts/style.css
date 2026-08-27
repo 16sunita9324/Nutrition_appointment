@@ -1,0 +1,728 @@
+/* =========================================
+   PAGE
+   ========================================= */
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #eff8d9;
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.login-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =========================================
+   LOGIN CARD
+   ========================================= */
+
+.login-card {
+
+    width: 380px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.login-card h1 {
+
+    text-align: center;
+
+    color: #174c3c;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================================
+   FORM GROUP
+   ========================================= */
+
+.form-group {
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================
+   LABEL
+   ========================================= */
+
+.form-group label {
+
+    display: block;
+
+    font-weight: bold;
+
+    color: #333;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================
+   INPUT
+   ========================================= */
+
+.form-group input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    background-color: #f1f6ff;
+
+}
+
+
+/* When user clicks input */
+
+.form-group input:focus {
+
+    outline: none;
+
+    border-color: #62b20b;
+
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+   ========================================= */
+
+.login-card button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #61b30b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+/* Button hover */
+
+.login-card button:hover {
+
+    background-color: #4f9808;
+
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+   ========================================= */
+
+.error {
+
+    color: red;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+.login-links {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+}
+
+
+/* Each link */
+
+.login-links a {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #61a90a;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+/* Link hover */
+
+.login-links a:hover {
+
+    text-decoration: underline;
+
+}
+/* =========================================
+   REGISTER PAGE
+   ========================================= */
+
+
+/* Main register page */
+
+.register-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* Register white card */
+
+.register-card {
+
+    width: 420px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* Register heading */
+
+.register-card h1 {
+
+    text-align: center;
+
+    color: #174c3c;
+
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* Small text under heading */
+
+.register-subtitle {
+
+    text-align: center;
+
+    color: #777;
+
+    margin-bottom: 30px;
+
+    font-size: 14px;
+
+}
+
+
+/* Form fields */
+
+.register-card .form-group {
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Labels */
+
+.register-card .form-group label {
+
+    display: block;
+
+    font-weight: bold;
+
+    color: #333;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* Input fields */
+
+.register-card .form-group input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    background-color: #f1f6ff;
+
+}
+
+
+/* When input is selected */
+
+.register-card .form-group input:focus {
+
+    outline: none;
+
+    border-color: #61b30b;
+
+    box-shadow: 0 0 5px rgba(97, 179, 11, 0.25);
+
+}
+
+
+/* Register button */
+
+.register-card button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #61b30b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 5px;
+
+}
+
+
+/* Button hover */
+
+.register-card button:hover {
+
+    background-color: #4f9808;
+
+}
+
+
+/* Error box */
+
+.error-box {
+
+    background-color: #ffeaea;
+
+    border: 1px solid #ffb3b3;
+
+    color: #c62828;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+}
+
+
+/* Error heading */
+
+.error-box h3 {
+
+    margin-top: 0;
+
+    font-size: 15px;
+
+}
+
+
+/* Links */
+
+.register-links {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+
+/* Individual links */
+
+.register-links a {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #333;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+/* Link hover */
+
+.register-links a:hover {
+
+    text-decoration: underline;
+
+}
+/* =========================================
+   GENERAL PAGE
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #f4f8e8;
+
+    color: #222;
+
+}
+
+
+
+/* =========================================
+   NAVIGATION BAR
+   ========================================= */
+
+.navbar {
+
+    width: 100%;
+
+    height: 70px;
+
+    background-color: #202428;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+
+/* =========================================
+   WEBSITE NAME
+   ========================================= */
+
+.navbar-brand {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+
+.brand-icon {
+
+    margin-right: 8px;
+
+}
+
+
+
+/* =========================================
+   NAVIGATION LINKS
+   ========================================= */
+
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 25px;
+}
+
+
+
+.nav-link {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    padding: 10px 15px;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+
+}
+
+.sub {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    
+    
+}
+.an{
+    color: aliceblue;
+}
+.nav-link:hover {
+
+    background-color: #4f8f0b;
+
+    color: white;
+
+}
+
+
+
+/* =========================================
+   USERNAME
+   ========================================= */
+
+.nav-user {
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =========================================
+   REGISTER BUTTON
+   ========================================= */
+
+.register-link {
+
+    background-color: #030500;
+
+}
+
+
+
+.register-link:hover {
+
+    background-color: #438408;
+
+}
+
+
+
+/* =========================================
+   ADMIN LINK
+   ========================================= */
+
+.admin-link {
+
+    background-color: #555;
+
+}
+
+
+
+.admin-link:hover {
+
+    background-color: #333;
+
+}
+
+
+
+/* =========================================
+   MESSAGES
+   ========================================= */
+
+.messages-container {
+
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: 20px auto;
+
+}
+
+
+
+.message {
+
+    background-color: #dff0d8;
+
+    color: #356b2c;
+
+    padding: 12px 18px;
+
+    border-radius: 6px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #b8d8ad;
+
+}
+
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+main {
+
+    width: 100%;
+
+    min-height: calc(100vh - 70px);
+
+}
+
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+
+    .navbar {
+
+        height: auto;
+
+        padding: 15px 0;
+
+    }
+
+
+    .nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+
+
+    .nav-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+}
+
+
+    .navbar-brand {
+    flex: 1;
+}
+
+
+
+}

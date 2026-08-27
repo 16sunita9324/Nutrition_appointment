@@ -1,0 +1,35 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Home - Tiny Nutrition Beginnings
+{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5" style="text-align: center;">
+
+    <h1>Welcome to Tiny Nutrition Beginnings</h1>
+
+    <p>
+        Your journey toward healthier eating starts here.
+    </p>
+
+    {% if user.is_authenticated %}
+        <div style="margin-top: 25px;">
+            <a href="{% url 'appointments:book' %}"
+               style="display:inline-block; padding:13px 22px; background:#61b30b; color:white; border-radius:9px; text-decoration:none; font-weight:bold; margin:5px;">
+                Book an Appointment
+            </a>
+
+            <a href="{% url 'appointments:my_appointments' %}"
+               style="display:inline-block; padding:13px 22px; background:#174c3c; color:white; border-radius:9px; text-decoration:none; font-weight:bold; margin:5px;">
+                My Appointments
+            </a>
+        </div>
+    {% else %}
+        <p style="margin-top:25px;">
+            Please login or create an account to book a nutrition consultation.
+        </p>
+    {% endif %}
+
+</div>
+{% endblock %}

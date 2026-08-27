@@ -1,0 +1,175 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Diet Plan
+        {% endblock %}
+    </title>
+    {% load static %}
+    <!-- Your own CSS -->
+   <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         NAVIGATION BAR
+         ================================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+
+            <!-- Website Logo / Name -->
+
+            <a class="navbar-brand"
+               href="{% url 'accounts:home' %}">
+
+                <span class="brand-icon">🍴</span>
+
+                Diet Plan
+
+            </a>
+
+            <div class="sub">
+                    <a href="{% url 'accounts:about' %}" class="an">About US</a>
+                    <a href="{% url 'accounts:contact' %}" class="an">Contacts</a>
+                    <a href="{% url 'accounts:home' %} " class="an">home</a>
+                </div>
+            <!-- Navigation Links -->
+
+            <div class="nav-links">
+
+                
+                {% if user.is_authenticated %}
+
+
+                    <!-- Logged in username -->
+
+                    <span class="nav-user">
+
+                        👤 {{ user.username }}
+
+                    </span>
+
+
+                    <!-- Logout -->
+
+                    <a href="{% url 'appointments:book' %}"
+                       class="nav-link">
+
+                        Book Appointment
+
+                    </a>
+
+                    <a href="{% url 'appointments:my_appointments' %}"
+                       class="nav-link">
+
+                        My Appointments
+
+                    </a>
+
+
+                    <!-- Logout -->
+
+                    <a href="{% url 'accounts:logout' %}"
+                       class="nav-link">
+
+                        Logout
+
+                    </a>
+
+
+
+                {% else %}
+
+
+                    <!-- Login -->
+
+                    <a href="{% url 'accounts:login' %}"
+                       class="nav-link">
+
+                        Login
+
+                    </a>
+
+
+                    <!-- Register -->
+
+                    <a href="{% url 'accounts:register' %}"
+                       class="nav-link">
+
+                        Register
+
+                    </a>
+
+
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =================================
+         MESSAGES
+         ================================= -->
+
+    <div class="messages-container">
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+
+
+    <!-- =================================
+         PAGE CONTENT
+         ================================= -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+</body>
+
+</html>

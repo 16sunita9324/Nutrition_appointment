@@ -1,0 +1,54 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}My Appointments - Tiny Nutrition Beginnings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appointments/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="appointments-list-page">
+    <div class="list-heading">
+        <div>
+            <p class="eyebrow">YOUR CONSULTATIONS</p>
+            <h1>My Appointments</h1>
+            <p>View and manage your nutrition consultation requests.</p>
+        </div>
+        <a href="{% url 'appointments:book' %}" class="primary-btn">+ Book Appointment</a>
+    </div>
+
+    {% if appointments %}
+        <div class="appointment-list">
+            {% for appointment in appointments %}
+                <div class="appointment-item">
+                    <div class="date-box">
+                        <span>{{ appointment.appointment_date|date:'M' }}</span>
+                        <strong>{{ appointment.appointment_date|date:'d' }}</strong>
+                        <small>{{ appointment.appointment_date|date:'Y' }}</small>
+                    </div>
+
+                    <div class="appointment-summary">
+                        <h3>Nutrition Consultation</h3>
+                        <p>🕐 {{ appointment.get_appointment_time_display }}</p>
+                        <p class="appointment-created">Requested {{ appointment.created_at|date:'d M Y, h:i A' }}</p>
+                    </div>
+
+                    <div class="appointment-status status-{{ appointment.status|lower }}">
+                        {{ appointment.status }}
+                    </div>
+
+                    <a href="{% url 'appointments:detail' appointment.pk %}" class="view-btn">View</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">📅</div>
+            <h2>No appointments yet</h2>
+            <p>Book your first nutrition consultation with Puja.</p>
+            <a href="{% url 'appointments:book' %}" class="primary-btn">Book Appointment</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

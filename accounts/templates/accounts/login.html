@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="{% static 'accounts/logincss.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Main Login Container -->
+    <div class="login-container">
+
+        <!-- Login Card -->
+        <div class="login-card">
+
+            <!-- Heading -->
+            <h1>Login</h1>
+
+            <!-- Error message -->
+            {% if error %}
+                <p class="error">
+                    {{ error }}
+                </p>
+            {% endif %}
+
+
+            <!-- Login Form -->
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <!-- Username -->
+                <div class="form-group">
+
+                    <label>Username:</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label>Password:</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Login Button -->
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- Links -->
+            <div class="login-links">
+
+                <a href="{% url 'accounts:register' %}">
+                    Create an account
+                </a>
+
+                <a href="{% url 'accounts:home' %}">
+                    Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Book Appointment - Tiny Nutrition Beginnings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appointments/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="appointment-page">
+    <div class="appointment-card">
+        <div class="appointment-header">
+            <div class="appointment-icon">📅</div>
+            <div>
+                <h1>Book an Appointment</h1>
+                <p>Schedule a consultation with Puja, our nutritionist.</p>
+            </div>
+        </div>
+
+        <div class="appointment-info">
+            <div><strong>Consultation:</strong> Nutrition & Diet Planning</div>
+            <div><strong>Available:</strong> Monday - Saturday</div>
+            <div><strong>Time:</strong> 10 AM - 4 PM</div>
+        </div>
+
+        {% if form.non_field_errors %}
+            <div class="form-error-box">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <form method="POST" class="appointment-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.appointment_date.id_for_label }}">Appointment Date</label>
+                {{ form.appointment_date }}
+                {% for error in form.appointment_date.errors %}
+                    <small class="field-error">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.appointment_time.id_for_label }}">Preferred Time</label>
+                {{ form.appointment_time }}
+                {% for error in form.appointment_time.errors %}
+                    <small class="field-error">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.reason.id_for_label }}">Reason for Consultation <span>(Optional)</span></label>
+                {{ form.reason }}
+                {% for error in form.reason.errors %}
+                    <small class="field-error">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="appointment-actions">
+                <a href="{% url 'accounts:home' %}" class="secondary-btn">Back</a>
+                <button type="submit" class="primary-btn">Request Appointment</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
